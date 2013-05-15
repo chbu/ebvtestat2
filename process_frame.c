@@ -92,13 +92,21 @@ void ProcessFrame(uint8 *pInputImg)
 						M1[k] += Hist[g] * g;
 					}
 					double term;
-					term = 1 / (double) W0[k] * (double) M0[k] - 1/(double) W1[k] * (double) M1[k];
-					sigma2[k] = (double) W0[k] * (double) W1[k] / ( (double)(376 * 240) * (double) (376 * 240) )  * term * term;
+					if (W0[k] == 0 || W1[k] == 0)
+					{
+						term =  (double) M0[k] - (double) M1[k];
+					}
+					else{
+						term = 1 / (double) W0[k] * (double) M0[k] - 1/(double) W1[k] * (double) M1[k];
+					}
+					sigma2[k] = (double) W0[k] * (double) W1[k] / 16777216  * term * term;
 
 					if (sigma2[k] > sigma2[thr]){
 						thr = k;
 					}
 				}
+
+				thr =  thr / 255 * 100;
 
 				//thr = 20; test unterer teil
 				for(r = 0; r < siz; r+= nc)/* we strongly rely on the fact that them images have the same size */
