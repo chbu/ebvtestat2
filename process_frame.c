@@ -48,7 +48,7 @@ void ProcessFrame(uint8 *pInputImg)
 	}
 	else
 	{
-			if(data.ipc.state.nThreshold != 0)
+			if(/*data.ipc.state.nThreshold != 0*/ false)
 			{
 
 				for(r = 0; r < siz; r+= nc)/* we strongly rely on the fact that them images have the same size */
