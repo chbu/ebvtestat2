@@ -106,7 +106,7 @@ void ProcessFrame(uint8 *pInputImg)
 					}
 				}
 
-				thr =  thr / 255 * 100;
+				//thr =  thr / 255 * 100;
 
 				//thr = 20; test unterer teil
 				for(r = 0; r < siz; r+= nc)/* we strongly rely on the fact that them images have the same size */
@@ -131,20 +131,20 @@ void ProcessFrame(uint8 *pInputImg)
 
 
 			//for debugging -> log Histogram
-						for (k=0;k<=255;k++)
-						{
-							//log all
-							OscLog(INFO, "[%d]\t %d\t %d\t %d\t %d\t %d\t %f\n",k,Hist[k],W0[k],M0[k],W1[k],M1[k],sigma2[k]);
+//						for (k=0;k<=255;k++)
+					//	{
+				//			//log all
+					///		OscLog(INFO, "[%d]\t %d\t %d\t %d\t %d\t %d\t %f\n",k,Hist[k],W0[k],M0[k],W1[k],M1[k],sigma2[k]);
 							//log custom
-							OscLog(INFO, "Hist[%d]\t %d\n", k , Hist[k]);
-							OscLog(INFO, "W0[%d]\t %d\n", k , W0[k]);
-							OscLog(INFO, "M0[%d]\t %d\n", k , M0[k]);
-							OscLog(INFO, "W1[%d]\t %d\n", k , W1[k]);
-							OscLog(INFO, "M1[%d]\t %d\n", k , M1[k]);
-							OscLog(INFO, "ob2[%d]\t %d\n", k , sigma2[k]);
-
-						}
-						OscLog(INFO, "thr\t %d\n", thr);
+						//	OscLog(INFO, "Hist[%d]\t %d\n", k , Hist[k]);
+					//		OscLog(INFO, "W0[%d]\t %d\n", k , W0[k]);
+				//			OscLog(INFO, "M0[%d]\t %d\n", k , M0[k]);
+			//				OscLog(INFO, "W1[%d]\t %d\n", k , W1[k]);
+		//					OscLog(INFO, "M1[%d]\t %d\n", k , M1[k]);
+	//						OscLog(INFO, "ob2[%d]\t %d\n", k , sigma2[k]);
+//
+						//}
+					//	OscLog(INFO, "thr\t %d\n", thr);
 
 
 		for(r = nc; r < siz-nc; r+= nc)/* we skip the first and last line */
